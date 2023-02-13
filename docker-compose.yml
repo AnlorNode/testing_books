@@ -1,19 +1,23 @@
-version: '3.8'
-services: 
+version: '3.1'
+services:
   mongo:
-    image: mongo:4.2.8-bionic
+    image: mongo
+    restart: always
     environment:
-      TZ: UTC
-      MONGO_INITDB_DATABASE: option
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: ookos3aHGk9laeDe
-      MONGO_INITDB_USERNAME: option
-      MONGO_INITDB_PASSWORD: TeX6Neidoh5uwei
-      MONGO_URL: mongo://mongo:27017
-      MONGO_REPLICA_SET_NAME: rs0
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
-      - ./db_data/mongo/db:/data/db  
-      - ./db_data/mongo/dump:/dump 
+      - ../db_data/mongo/db:/data/db  
+      - ../db_data/mongo/dump:/dump 
     ports:
       - 27027:27017
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
   

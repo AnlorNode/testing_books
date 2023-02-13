@@ -1,10 +1,9 @@
 /* eslint-disable global-require */
 
 const path = require('path');
-const { Telegraf } = require('telegraf');
 const { createContainer, asValue, asClass, InjectionMode } = require('awilix');
 
-const { WinstonLogger } = require('../lib');
+const { WinstonLogger, MongoDatastore } = require('../lib');
 
 const config = require('../config');
 const HttpServer = require('../http/HttpServer');
@@ -19,11 +18,9 @@ const logger = new WinstonLogger({
     instanceId: 1,
     logsDirectory: path.resolve(__dirname, '..', '..', 'logs'),
 });
-
-const bot = new Telegraf(config.telegramBotToken);
-const botTwo = new Telegraf(config.telegramBotTokenTwo);
-
+const mongoBase = new MongoDatastore(config.mongo, logger);
 async function init() {
+    await mongoBase.connect();
     const Services = Object.assign(...AppModules.map((m) => m.services));
     const Controllers = Object.assign(...AppModules.map((m) => m.controllers));
     const registrations = {};
@@ -36,10 +33,8 @@ async function init() {
 
     appContainer.register({
         config: asValue(config),
-        bot: asValue(bot),
-        botTwo: asValue(botTwo),
+        mongoBase: asValue(mongoBase),
         logger: asValue(logger),
-
         router: asClass(Router).singleton(),
         httpServer: asClass(HttpServer).singleton(),
         instance: asClass(WardenInstance).singleton(),
