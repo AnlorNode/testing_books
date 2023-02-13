@@ -9,7 +9,7 @@ class HealthController {
     async get(req, res) {
         const statistics = await this.healthService.get();
 
-        res.ok(statistics);
+        res.json(statistics);
     }
 }
 

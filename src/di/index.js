@@ -9,7 +9,7 @@ const config = require('../config');
 const HttpServer = require('../http/HttpServer');
 const Router = require('../http/Router');
 const WardenInstance = require('../WardenInstance');
-
+const Books = require('../db/models/Books');
 const AppModules = [require('../health')];
 
 const logger = new WinstonLogger({
@@ -19,6 +19,7 @@ const logger = new WinstonLogger({
     logsDirectory: path.resolve(__dirname, '..', '..', 'logs'),
 });
 const mongoBase = new MongoDatastore(config.mongo, logger);
+
 async function init() {
     await mongoBase.connect();
     const Services = Object.assign(...AppModules.map((m) => m.services));
@@ -38,6 +39,7 @@ async function init() {
         router: asClass(Router).singleton(),
         httpServer: asClass(HttpServer).singleton(),
         instance: asClass(WardenInstance).singleton(),
+        Books: asValue(Books),
         ...registrations,
     });
 

@@ -10,16 +10,16 @@ class MongoDatastore {
     }
 
     connect() {
-        const mongo = mongoose.connect(this.buildConnection(this.config), /* {
+        const mongo = mongoose.connect(this.buildConnection(this.config)/* , {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false,
             useCreateIndex: true,
         } */);
         const { connection } = mongoose;
-        // connection
-        //     .on('connect', () => this.logger.info('Connected to Mongo', 'mongo', { connection }))
-        //     .on('error', (error) => this.logger.error('Connection Mongo error', 'mongo', { error }));
+        connection
+            .on('connect', () => this.logger.info('Connected to Mongo', 'mongo', { connection }))
+            .on('error', (error) => this.logger.error('Connection Mongo error', 'mongo', { error }));
         this.provider = mongo;
         return mongo;
     }
