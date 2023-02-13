@@ -10,12 +10,7 @@ class MongoDatastore {
     }
 
     connect() {
-        const mongo = mongoose.connect(this.buildConnection(this.config)/* , {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useFindAndModify: false,
-            useCreateIndex: true,
-        } */);
+        const mongo = mongoose.connect(this.buildConnection(this.config));
         const { connection } = mongoose;
         connection
             .on('connect', () => this.logger.info('Connected to Mongo', 'mongo', { connection }))

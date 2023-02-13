@@ -7,11 +7,44 @@ class BookController {
         bind(this);
     }
 
-    async add({ body }, res) {
+    async addBook({ body }, res) {
         const validators = this.validators.addBook;
         try {
             const value = await validators.validateAsync(body);
-            const statistics = await this.bookService.get(value);
+            const statistics = await this.bookService.addBook(value);
+            res.json(statistics);
+        } catch (err) {
+            res.json(err);
+        }
+    }
+
+    async updateBook({ body }, res) {
+        const validators = this.validators.updateBook;
+        try {
+            const value = await validators.validateAsync(body);
+            const statistics = await this.bookService.updateBook(value);
+            res.json(statistics);
+        } catch (err) {
+            res.json(err);
+        }
+    }
+
+    async getBookDyId({ params }, res) {
+        const validators = this.validators.getBookDyId;
+        try {
+            const value = await validators.validateAsync(params.id);
+            const statistics = await this.bookService.getBookDyId(value);
+            res.json(statistics);
+        } catch (err) {
+            res.json(err);
+        }
+    }
+
+    async getbooksAll({ params }, res) {
+        const validators = this.validators.getbooksAll;
+        try {
+            const value = await validators.validateAsync(params);
+            const statistics = await this.bookService.getbooksAll(value);
             res.json(statistics);
         } catch (err) {
             res.json(err);
