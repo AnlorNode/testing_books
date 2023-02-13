@@ -8,7 +8,7 @@ class ApiRouter {
 
     health() {
         const router = Router();
-        router.get('/', this.healthController.get);
+        router.put('/', this.healthController.add);
         return router;
     }
 }

@@ -4,7 +4,7 @@ const path = require('path');
 const { createContainer, asValue, asClass, InjectionMode } = require('awilix');
 
 const { WinstonLogger, MongoDatastore } = require('../lib');
-
+const validatorsFactory = require('../http/middlewares/validation');
 const config = require('../config');
 const HttpServer = require('../http/HttpServer');
 const Router = require('../http/Router');
@@ -35,6 +35,7 @@ async function init() {
     appContainer.register({
         config: asValue(config),
         mongoBase: asValue(mongoBase),
+        validators: asValue(validatorsFactory),
         logger: asValue(logger),
         router: asClass(Router).singleton(),
         httpServer: asClass(HttpServer).singleton(),

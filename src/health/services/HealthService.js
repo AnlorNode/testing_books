@@ -4,12 +4,8 @@ class HealthsService {
         this.Books = opts.Books;
     }
 
-    async get() {
-        const Books = await this.Books.create({
-            title: 'title',
-            author: 'author',
-        });
-
+    async get(data) {
+        const Books = await this.Books.create(data);
         return Books;
     }
 }
