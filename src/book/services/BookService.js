@@ -1,4 +1,4 @@
-class HealthsService {
+class BooksService {
     constructor(opts) {
         this.logger = opts.logger;
         this.Books = opts.Books;
@@ -10,4 +10,4 @@ class HealthsService {
     }
 }
 
-module.exports = HealthsService;
+module.exports = BooksService;

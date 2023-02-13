@@ -1,9 +1,9 @@
 const bind = require('auto-bind');
 
-class HealthController {
+class BookController {
     constructor(opts) {
         this.validators = opts.validators;
-        this.healthService = opts.healthService;
+        this.bookService = opts.bookService;
         bind(this);
     }
 
@@ -11,7 +11,7 @@ class HealthController {
         const validators = this.validators.addBook;
         try {
             const value = await validators.validateAsync(body);
-            const statistics = await this.healthService.get(value);
+            const statistics = await this.bookService.get(value);
             res.json(statistics);
         } catch (err) {
             res.json(err);
@@ -19,4 +19,4 @@ class HealthController {
     }
 }
 
-module.exports = HealthController;
+module.exports = BookController;

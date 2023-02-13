@@ -16,7 +16,7 @@ class HttpServer {
     }
 
     api() {
-        this.app.use('/book', this.router.health());
+        this.app.use('/book', this.router.book());
 
         return this.app;
     }

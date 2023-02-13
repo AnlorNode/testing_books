@@ -10,7 +10,7 @@ const HttpServer = require('../http/HttpServer');
 const Router = require('../http/Router');
 const WardenInstance = require('../WardenInstance');
 const Books = require('../db/models/Books');
-const AppModules = [require('../health')];
+const AppModules = [require('../book')];
 
 const logger = new WinstonLogger({
     clayster: 'clayster_warden',

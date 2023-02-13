@@ -3,12 +3,12 @@ const { Router } = require('express');
 
 class ApiRouter {
     constructor(opts) {
-        this.healthController = opts.healthController;
+        this.bookController = opts.bookController;
     }
 
-    health() {
+    book() {
         const router = Router();
-        router.put('/', this.healthController.add);
+        router.put('/', this.bookController.add);
         return router;
     }
 }
