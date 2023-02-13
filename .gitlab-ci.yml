@@ -1,0 +1,8 @@
+include:
+  - project: 'devops/crm-ci-cd'
+    ref: main
+    file: 'backend-node-ci.yml'
+         
+             
+        
+     

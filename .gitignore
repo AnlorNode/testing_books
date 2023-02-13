@@ -1,0 +1,15 @@
+node_modules/
+parse_language/
+leads-exports/
+logs
+package-lock.json
+test.js
+config.json
+config_copy.json
+.vscode/sftp.json
+.env
+test.json
+utils/missed-phones.json
+.eslintcache
+test.ts
+yarn.lock
