@@ -40,6 +40,17 @@ class BookController {
         }
     }
 
+    async deleteBookDyId({ params }, res) {
+        const validators = this.validators.getBookDyId;
+        try {
+            const value = await validators.validateAsync(params.id);
+            const statistics = await this.bookService.deleteBookDyId(value);
+            res.json(statistics);
+        } catch (err) {
+            res.json(err);
+        }
+    }
+
     async getbooksAll({ params }, res) {
         const validators = this.validators.getbooksAll;
         try {

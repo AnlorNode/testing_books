@@ -19,6 +19,11 @@ class BooksService {
         return book;
     }
 
+    async deleteBookDyId(id) {
+        const book = await this.books.deleteOne({ _id: id });
+        return book;
+    }
+
     async getbooksAll({ pagination = 0, limit = 5 }) {
         const books = await this.books.find()
 

@@ -10,6 +10,7 @@ class ApiRouter {
         router.post('/', this.bookController.addBook);
         router.put('/', this.bookController.updateBook);
         router.get('/:id', this.bookController.getBookDyId);
+        router.delete('/:id', this.bookController.deleteBookDyId);
         return router;
     }
 
