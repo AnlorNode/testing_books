@@ -31,7 +31,7 @@
     "title": "Irene Gutierrez",
     "author": "Lawrence Davidson"
    }
- ```
+  ```
 - видалення книги з id;
   ```js
    DELETE https://testing-books.onrender.com/book/<id book>
