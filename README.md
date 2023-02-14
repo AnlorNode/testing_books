@@ -2,15 +2,15 @@
 
 
 - отримання всіх книг з можливою пагінацією (параметри page та limit)
- ```js
-    GET https://testing-books.onrender.com/books/<pagination>
-    GET https://testing-books.onrender.com/books/<pagination>/<limit>
- ```
+  ```js
+   GET https://testing-books.onrender.com/books/<pagination>
+   GET https://testing-books.onrender.com/books/<pagination>/<limit>
+  ```
 
 - отримання однієї книги з id;
- ```js
-    GET https://testing-books.onrender.com/book/<id book>
- ```
+  ```js
+   GET https://testing-books.onrender.com/book/<id book>
+   ```
 
 - додавання книги із валідацією тіла запиту;
   ```js
@@ -20,10 +20,10 @@
     "title": "Joshua Chavez",
     "author": "Mabel Nelson"
    }
-   ```
+  ```
 
 - оновлення книги з id (роут повинен повертати оновлену книгу);
- ```js
+  ```js
    PUT https://testing-books.onrender.com/book 
    Request body:
    {
