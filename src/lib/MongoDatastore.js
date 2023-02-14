@@ -27,15 +27,13 @@ class MongoDatastore {
         username,
         password,
         host,
-        port,
+
         database,
-        options,
+
     }) {
         const credentials = username && password ? `${username}:${password}@` : '';
-        const connectionOptions = Object.prototype.toString.call(options) === '[object Object]' ?
-            `?${Object.entries(options).map(([key, value]) => `${key}=${value}`).join('&')}` :
-            '';
-        return `mongodb://${credentials}${host}:${port}/${database}${connectionOptions}`;
+console.log(`mongodb+srv://${credentials}${host}/${database}`);
+        return `mongodb+srv://${credentials}${host}/${database}`;
     }
 }
 module.exports = MongoDatastore;
